@@ -46,16 +46,16 @@ The IARC is an competition that strives to push the boundaries of aerial flights
 These missions are geared towards college teams/organizations to take their shot solving the issue which opens the door for creative. A design team on campus, The Multirotor Robot Design Team(MRR) is one such team and has been tackling this since 2016. They have gone through many microcontrollers, specifically flight boards, and have found the feasibility of each one for the given task.
 
 \section{History}
-MRR has been in the autonomous flight field since the very beginning but they could not have gotten there without the short comings and the lessons learned along the way. One of the most important things learned along the way, is the need for the right sensors and flight board for autonomous based tasks. The team experimented with two microcontrollers before settling with one that really suites their needs. Each one has its unique features and feasibility to the challenge at hand: Fly autonomously in an indoor environment with limited sensor input. 
+MRR has been in the autonomous flight field since the very beginning but they could not have gotten there without the short comings and the lessons learned along the way. One of the most important things learned along the way, is the need for the right sensors and flight board for autonomous based tasks. The team experimented with two microcontrollers before settling with one that really suites their needs. Each one has its unique features and feasibility to the challenge at hand: Fly autonomously in an indoor environment with limited sensor input.
 
 \subsection{APM Flight Board}
-This is where discussions for APM will take place.
+The APM flight board was the very first board that the team used in their attempts in autonomous flight. Figure 1 outlines the design of the board itself along with the pinout. This particular board, APM 2.X has since been discontinued but is still capable of running firmware up to Arducopter, an open source flight firmware, 3.3 \cite{apm_board}. Because of the discontinuation of the APM board, the team was unable to achieve the tasks at hand. 
 
 \subsection{Arduino}
-This is where the Arduino will come into play.
+Like many robotics based projects, the Arduino was an obvious choice to try to attempt the challenge of restricted, autonomous flight. Figure 2 outlines the pinout for the Arduino Mega and it was used as the first attempt at creating a custom flight controller. The overall goal was to use the Arduino as both the onboard computer as well as the flight controller. The onboard computer portion of the Arduino would be used to write the code necessary to fly and then send which ever commands are necessary in the given moment to the autopilot \cite{on_board}
 
 \subsection{Pixhawk}
-This is where the Pixhawk will be torn apart, smh it needs to be stopped. 
+The Pixhawk is the real star of the show and is where much of the focus will be since it is the most updated flight controller and has the most capabilities to complete the challenges at hand. The Pixhawk leverages the power of a different microporcessor from revision to revision, the one of interest for now is the Cortex -M4. Figure 3 depicts the organization of the Cortex-M4 along side the Pixhawk Cube with its carrier board.
 
 \section{The Microcontrollers That Could}
 \subsection{APM Flight Board: Captain}
@@ -63,13 +63,14 @@ This is where the Pixhawk will be torn apart, smh it needs to be stopped.
 	\includegraphics[scale=0.40]{apm2.jpg}
 	\caption {Layout of APM2.5 Flight Controller}
 \end{figure}
+During the early development years of MRR, they were experimenting with the possibilty of building a drone from scratch. This meant developing the frame, the propellers and motors, and more importantly the electronics for the drone. Since the first year wasn't focused on the autonomy of the challenge, the team was in search of a flight board to control the motors and other accessories such as the camera gimbal. 
 \subsubsection{Features}
-Talk about the features
+The APM Board comes with a plethora of options and feature and some of the more notable ones include: Telemetry, GPS, I2c, analog input pins, digital output pins. \cite{apm_board}\\
+These features each have their unique features but since this is supposed to designed to be a flight board, it has the other features such as an IMU and barometer. 
 \subsubsection{Use Cases}
-Talk about the many use cases
+For this flight board the two use cases are manual and aided, autonomous flight. The manual flight is built into the flight board, as all it takes is a few simple processes such as calibrating each sensor and the electronic speed controllers (ESC). The aided, autonomous flight is also a use case but is dependent on having a GPS, which would need to be added externally. It is feasible to achieve some autonomous features with an onboard computer but, without certain sensors, it will be limited in its abilities. 
 \subsubsection{Task Feasibility}
-Talk about if the task is even possible given the steaks.
-
+The APM board is a great board for flying custom built drones manually, but autonomously is another story. As MRR advanced from year to year, more and more solid ideas to achieve autonomous flight were developed.
 
 \subsection{Arduino: Mega}
 \begin{figure}
@@ -103,13 +104,15 @@ This section is where the paper will end and everything will make sense once aga
 
   \begin{thebibliography}{999}
 
-  \bibitem{linux_source} Bootlin {\em Linux source code: (v4.18.15) - Bootlin. [Online]. Available: \url{https://elixir.bootlin.com/linux/v2.6.36/source/kernel/sched.c}} [Accessed: 07-Dec-2018].
+  \bibitem{apm_board}  APM Board  {\em [Online]. Available: \url{http://ardupilot.org/copter/docs/common-apm25-and-26-overview.html#common-apm25-and-26-overview}} [Accessed: 11-Mar-2019].
 
-  \bibitem{virtual_runtime}  CFS Scheduler {\em [Online]. Available: \url{https://www.kernel.org/doc/Documentation/scheduler/sched-design-CFS.txt}} [Accessed: 07-Dec-2018].
+  \bibitem{arduino} Arduino Mega{\em [Online]. Available: \url{https://www.arduino.cc/en/Main/arduinoBoardMega/}} [Accessed: 11-Mar-2019]
 
-  \bibitem{testing_sched} L. Jelenković, S. Groš, and D. Jakobović {\em Testing task schedulers on Linux system.} 
+  \bibitem{optical_flow} OpenCV Otical Flow {\em [Online]. Available: \url{https://docs.opencv.org/3.3.1/d7/d8b/tutorial_py_lucas_kanade.html}} [Accessed: 11-Mar-2019]
 
-  \bibitem{red_black_tree} J. Morris {\em “Red Black Trees,” Data Structures and Algorithms: Hash Tables. [Online]. Available: \url{https://www.cs.auckland.ac.nz/software/AlgAnim/red_black.html}.} [Accessed: 07-Dec-2018]
+\bibitem{pixhawk_cube} Pixhawk Cube {\em [Online]. Available: \url{https://docs.px4.io/en/flight_controller/pixhawk-2.html}} [Accessed: 11-Mar-2019]
+
+\bibitem{on_board} Companion Computers {\em [Online]. Available: \url{http://python.dronekit.io/develop/companion-computers.html#supported-companion-computers}} [Accessed: 11-Mar-2019]
 
   \end{thebibliography}
 \end{document}
