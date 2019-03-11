@@ -52,7 +52,7 @@ These missions are geared towards college teams/organizations to take their shot
 MRR has been in the autonomous flight field since the very beginning but they could not have gotten there without the short comings and the lessons learned along the way. One of the most important things learned along the way, is the need for the right sensors and flight board for autonomous based tasks. The team experimented with two microcontrollers before settling with one that really suites their needs. Each one has its unique features and feasibility to the challenge at hand: Fly autonomously in an indoor environment with limited sensor input.
 
 \subsection{APM Flight Board}
-The APM flight board was the very first board that the team used in their attempts in autonomous flight. Figure 1 outlines the design of the board itself along with the pinout. This particular board, APM 2.X has since been discontinued but is still capable of running firmware up to Arducopter, an open source flight firmware, 3.3 \cite{apm_board}. Because of the discontinuation of the APM board, the team was unable to achieve the tasks at hand. 
+The APM flight board was the very first board that the team used in their attempts in autonomous flight. Figure 1 outlines the design of the board itself along with the pinout. This particular board, APM 2.X has since been discontinued but is still capable of running firmware up to Arducopter, an open source flight firmware, 3.3 \cite{apm_board}. This line of boards is also based around the AVR CPUs. Because of the discontinuation of the APM board, the team was unable to achieve the tasks at hand. 
 
 \subsection{Arduino}
 Like many robotics based projects, the Arduino was an obvious choice to try to attempt the challenge of restricted, autonomous flight. Figure 2 outlines the pinout for the Arduino Mega and it was used as the first attempt at creating a custom flight controller. The overall goal was to use the Arduino as both the onboard computer as well as the flight controller. The onboard computer portion of the Arduino would be used to write the code necessary to fly and then send which ever commands are necessary in the given moment to the autopilot \cite{on_board}
@@ -87,7 +87,7 @@ The Mega also features a suite for writing C based code to interface with the co
 \subsubsection{Use Cases}
 There are many articles and papers that exist which point the creation of custom drones to use some sort of Arduino as the flight controller. While this is perfect for manual flight, it is much more difficult for fully autonomous flight. For an arduino to function as a flight controller it will utilize the serial ports to interface with the transmitter and receiver while also utilizing the PWM features of the board to control the motors of the frame. 
 \subsubsection{Task Feasibility}
-Talk about if the task is even possible given the steaks.
+The Arduino family is known for being a family of microcontrollers that are perfect for general purpose use cases and more specific use cases if given the time to really adapt them. However, it is not the best option for having the board be an companion computer as well as the full flight board. It has more than enough communication protocols to communicate with any sensors connected, via I2c or serial, but with the SRAM size of $8KB$ and a clock speed of $16Mhz$ \cite{arduino}, that is not nearly enough processing power available to sustain fully autonomous flight. Manually flight is possible, based solely on converting the digital signals to analog PWM values, and doing some telemetry work on the sensor data. 
 
 \subsection{Cortex-M4: PixHawk 2 (The Cube)}
 \begin{figure}
@@ -95,18 +95,20 @@ Talk about if the task is even possible given the steaks.
 	\includegraphics[scale=0.25]{cube.jpg}
 	\caption{Cortex-M4 and Pixhawk 2(The Cube)}
 \end{figure}
-\subsubsection{Features}
-Talk about the features
-\subsubsection{Use Cases}
-Talk about the many use cases
-\subsubsection{Task Feasibility}
-Talk about if the task is even possible given the steaks.
+In the open source flight community, the Pixhawk is the unofficial champion. This family of flight boards sport a plethora of I/O as well as the processing power and specs to tackle any tasks thrown at them. Figure 3 shows one of the newest additions to the Pixhawk family, The Pixhawk 2: Cube, and the microcontroller that does all the heavy lifting, the Cortex-M4. Because of it's capabilities this was a clear choice for MRR to use to develop their autonomous systems. 
 
+\subsubsection{Features}
+There is a reason that the Pixhawk family is the unofficial king of the open source flight controller family and that is for the many features that they have to offer. These features include, but are not limited to: IMU, 14 PWM / Servo outputs, $256 KB RAM$, clock speed of $168 MHz$, UART, and I2c. The most important feature is to flash a pre-compiled firmware that is specialized for the given use case to make programming and usage more diverse. 
+\subsubsection{Use Cases}
+With the ability to flash custom, pre-compiled firmwares onto the Pixhawk, this opens the doors to many applications and use cases. The main focus for this paper is the Ardupilot line of firmwares which include: Copter, Rover, and Plane. The Pixhawk is able to abstract the specific functionality and give high level development for the most advanced autonomous features. Along with autonomous use cases, manual operation is built in and with the default senors and ability to add more, the manual flight is some of the most stable and feature rich. 
+\subsubsection{Task Feasibility}
+One of the main purposes of the Pixhawk is to make flight operations as painless as possible by allowing as much plug and play as the market and hardware allows. With this, each and every sensor imaginable has some value to the flight operations. Some of the more notable sensors are rangefinders and optical flow sensors using the I2c protocol. These two sensors combined with the default flight modes allow multirotors sporting the Pixhawk to be an unstoppable force. The Pixhawk also features many forms of telemetry and high level programming for fully autonomous flight, given some sort of companion computer and other external cameras or mapping devices.
 
 
 \section{Conclusion}
-This section is where the paper will end and everything will make sense once again
+Tie everything back together and explain why the pixhawk, being a specialized flight board is necessary for the task at hand.
 
+\clearpage
   \begin{thebibliography}{999}
 
   \bibitem{apm_board}  APM Board  {\em [Online]. Available: \url{http://ardupilot.org/copter/docs/common-apm25-and-26-overview.html#common-apm25-and-26-overview}} [Accessed: 11-Mar-2019].
