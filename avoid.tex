@@ -17,6 +17,8 @@
 \usepackage{url}
 \usepackage{flushend}
 \usepackage{listings}
+\usepackage{setspace}
+\usepackage{times}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -36,6 +38,7 @@
 % make the title area
 \maketitle
 
+\doublespace
 \begin{abstract}
 As the world continues to develop, more and more problems arise that can be solved with the use of advanced software systems. These problems can be things such as navigating an unfamiliar environment or surveying known environments after disaster strikes. To accomplish these goals, months of R\&D is poured into specific problems and how to solve them with the current technological advances. 
 \end{abstract}
@@ -72,15 +75,17 @@ For this flight board the two use cases are manual and aided, autonomous flight.
 \subsubsection{Task Feasibility}
 The APM board is a great board for flying custom built drones manually, but autonomously is another story. As MRR advanced from year to year, more and more solid ideas to achieve autonomous flight were developed.
 
-\subsection{Arduino: Mega}
+\subsection{ATmega1280: Arduino Mega }
 \begin{figure}
 	\includegraphics[scale=0.25]{mega.png}
 	\caption {Layout of Arduino Mega  Microcontroller}
 \end{figure}
+As MRR started to enter their first attempts at achieving fully autonomous flight, the idea was given that an Arduino would be a good board to use. This idea was presented in the form that the Arduino would act as the flight board, controlling the motors and acting as a bridge for other auxiliary sensors, as well as acting as the companion computer which will run the autonomous code. 
 \subsubsection{Features}
-Talk about the features
+Because of the versatility of the Arduino Mega, it was the perfect choice for this first attempt. The Mega includes the following inputs and outputs built off of the ATmega1280:  Serial, PWM, and I2c.\cite{arduino} \\
+The Mega also features a suite for writing C based code to interface with the controller and I/O at a higher level, though not as high of a level as the Pixhawk which will be discussed later. 
 \subsubsection{Use Cases}
-Talk about the many use cases
+There are many articles and papers that exist which point the creation of custom drones to use some sort of Arduino as the flight controller. While this is perfect for manual flight, it is much more difficult for fully autonomous flight. For an arduino to function as a flight controller it will utilize the serial ports to interface with the transmitter and receiver while also utilizing the PWM features of the board to control the motors of the frame. 
 \subsubsection{Task Feasibility}
 Talk about if the task is even possible given the steaks.
 
